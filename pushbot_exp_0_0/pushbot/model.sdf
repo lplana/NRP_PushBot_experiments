@@ -1,0 +1,276 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+
+  <model name="pushbot">
+    <pose>0 0 0 0 0 0</pose>
+
+    <link name="chassis">
+      <pose>0 0 0 0 0 0</pose>
+      <inertial>
+        <mass>130</mass>
+        <!-- for a box: ixx = 0.083 * mass * (y*y + z*z)
+                        iyy = 0.083 * mass * (x*x + z*z)
+                        izz = 0.083 * mass * (x*x + y*y) -->
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.075 0.065 0.02</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="chassis">
+        <geometry>
+          <box>
+            <size>0.075 0.065 0.02</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+
+    <link name="back_left_wheel">
+      <pose> -0.0175 0.0425 0.003 0 0 0</pose>
+      <inertial>
+        <mass>25</mass>-->
+        <!-- for a solid cylinder, along y-axis: ixx = izz = 0.083 * mass * (3*r*r + l*l)
+                                                 iyy = 0.5 * mass * r*r -->
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <pose>0 0 0 -1.5707 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.015</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="back_left_wheel">
+        <pose>0 0 0 -1.5707 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.015</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.2 1</diffuse>
+          <specular>0 0 0 0</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="back_left_joint" type="revolute">
+      <parent>chassis</parent>
+      <child>back_left_wheel</child>
+      <axis>
+      <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <link name="back_right_wheel">
+      <pose> -0.0175 -0.0425 0.003 0 0 0</pose>
+      <inertial>
+        <mass>25</mass>
+        <!-- for a solid cylinder, along y-axis: ixx = izz = 0.083 * mass * (3*r*r + l*l)
+                                                 iyy = 0.5 * mass * r*r -->
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <pose>0 0 0 -1.5707 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.015</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="back_right_wheel">
+        <pose>0 0 0 -1.5707 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.015</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.2 1</diffuse>
+          <specular>0 0 0 0</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="back_right_joint" type="revolute">
+      <parent>chassis</parent>
+      <child>back_right_wheel</child>
+      <axis>
+      <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <link name="front_left_wheel">
+      <pose> 0.0275 0.0425 0.003 0 0 0</pose>
+      <inertial>
+        <mass>25</mass>
+        <!-- for a solid cylinder, along y-axis: ixx = izz = 0.083 * mass * (3*r*r + l*l)
+                                                 iyy = 0.5 * mass * r*r -->
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <pose>0 0 0 -1.5707 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.015</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="front_left_wheel">
+        <pose>0 0 0 -1.5707 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.015</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.2 1</diffuse>
+          <specular>0 0 0 0</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="front_left_joint" type="revolute">
+      <parent>chassis</parent>
+      <child>front_left_wheel</child>
+      <axis>
+      <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <link name="front_right_wheel">
+      <pose> 0.0275 -0.0425 0.003 0 0 0</pose>
+      <inertial>
+        <mass>25</mass>
+        <!-- for a solid cylinder, along y-axis: ixx = izz = 0.083 * mass * (3*r*r + l*l)
+                                                 iyy = 0.5 * mass * r*r -->
+        <inertia>
+          <ixx>1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1</iyy>
+          <iyz>0</iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <pose>0 0 0 -1.5707 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.015</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1.0</mu>
+              <mu2>1.0</mu2>
+              <slip1>0.0</slip1>
+              <slip2>0.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="front_right_wheel">
+        <pose>0 0 0 -1.5707 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.015</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.2 1</diffuse>
+          <specular>0 0 0 0</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="front_right_joint" type="revolute">
+      <parent>chassis</parent>
+      <child>front_right_wheel</child>
+      <axis>
+      <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+  </model>
+</sdf>

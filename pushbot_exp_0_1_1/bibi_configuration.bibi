@@ -1,0 +1,14 @@
+<ns1:bibi
+  xmlns:ns1="http://schemas.humanbrainproject.eu/SP10/2014/BIBI"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ns1:brainModel>
+    <ns1:file>pushbot_brain.py</ns1:file>
+    <ns1:populations population="left_wheels_neuron"  count="1" xsi:type="ns1:Population" />
+    <ns1:populations population="right_wheels_neuron" count="1" xsi:type="ns1:Population" />
+    <ns1:populations population="stimulus" count="1" xsi:type="ns1:Population" />
+  </ns1:brainModel>
+  <ns1:bodyModel robotId="pushbot">pushbot_model/model.sdf</ns1:bodyModel>
+  <ns1:transferFunction src="pushbot_wheel_control.py" xsi:type="ns1:PythonTransferFunction" />
+  <ns1:transferFunction src="narrow_events_view.py"    xsi:type="ns1:PythonTransferFunction" />
+  <ns1:transferFunction src="all_neurons_spike_monitor.py" xsi:type="ns1:PythonTransferFunction" />
+</ns1:bibi>
