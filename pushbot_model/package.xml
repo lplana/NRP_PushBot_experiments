@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <name>pushbot_model</name>
+  <version>0.0.3</version>
+  <description>SDF description for Pushbot robot</description>
+
+  <maintainer email="oskarwei@kth.se">Oskar Weinberger</maintainer>
+  <author email="oskarwei@kth.se">Oskar Weinberger</author>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>
