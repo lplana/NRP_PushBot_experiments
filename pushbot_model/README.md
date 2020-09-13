@@ -1,6 +1,6 @@
 # PushBot model
 
-#### Initial PushBot model provided by [Oskar Weinberger](oskarwei@kth.se) from KTH.
+#### Initial PushBot model provided by Oskar Weinberger (oskarwei@kth.se).
 
 #### Current status:
 
