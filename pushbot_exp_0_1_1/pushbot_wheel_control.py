@@ -7,15 +7,8 @@
 #------------------------------
 # PushBot brain neurons that control wheel movement
 @nrp.MapSpikeSink(
-    "left_wheels_neuron",
-    nrp.brain.left_wheels_neuron, nrp.leaky_integrator_exp,
-    weight=0.1
-    )
-
-@nrp.MapSpikeSink(
-    "right_wheels_neuron",
-    nrp.brain.right_wheels_neuron, nrp.leaky_integrator_exp,
-    weight=0.1
+    "neuron_pop",
+    nrp.brain.neuron_pop, nrp.nrp.leaky_integrator_alpha
     )
 #------------------------------
 # ROS topics to control PushBot wheels
@@ -43,25 +36,24 @@
 @nrp.Neuron2Robot()
 #------------------------------
 #
-def pushbot_wheel_control(
+def pushbot_wheel_control (
         t,
-        left_wheels_neuron,
-        right_wheels_neuron,
+        neuron_pop,
         back_left_wheel,
         back_right_wheel,
         front_left_wheel,
-        front_right_wheel):
+        front_right_wheel
+        ):
 
     # compute velocity commands
-#    vel_left  = 100 * left_wheels_neuron.voltage
-#    vel_right = 100 * right_wheels_neuron.voltage
-    vel_left  = -5.0
-    vel_right =  5.0
+    pushbot_vel = 100 * neuron_pop.voltage
+    vel_left  = -pushbot_vel
+    vel_right =  pushbot_vel
 
     # send same velocity command to both left-side wheels
-    back_left_wheel.send_message(std_msgs.msg.Float64(vel_left))
-    front_left_wheel.send_message(std_msgs.msg.Float64(vel_left))
+    back_left_wheel.send_message (std_msgs.msg.Float64(vel_left))
+    front_left_wheel.send_message (std_msgs.msg.Float64(vel_left))
 
     # send same velocity command to both right-side wheels
-    back_right_wheel.send_message(std_msgs.msg.Float64(vel_right))
-    front_right_wheel.send_message(std_msgs.msg.Float64(vel_right))
+    back_right_wheel.send_message (std_msgs.msg.Float64(vel_right))
+    front_right_wheel.send_message (std_msgs.msg.Float64(vel_right))
